@@ -1,4 +1,4 @@
-// navigation  menu js
+
 function openNav() {
     $("#myNav").addClass("menu_width");
     $(".menu_btn-style").fadeIn();
@@ -10,7 +10,6 @@ function closeNav() {
 }
 
 
-// get current year
 
 function displayYear() {
     var d = new Date();
@@ -21,7 +20,6 @@ displayYear();
 
 
 
-//client section owl carousel
 $(".owl-carousel").owlCarousel({
     loop: true,
     margin: 10,
@@ -47,7 +45,6 @@ $(".owl-carousel").owlCarousel({
 });
 
 
-// slider carousel control
 
 
 $('.slider_btn_prev').on('click', function (e) {
@@ -64,7 +61,6 @@ $('.slider_btn_next').on('click', function (e) {
 })
 
 
-/** google_map js **/
 
 function myMap() {
     var mapProp = {
